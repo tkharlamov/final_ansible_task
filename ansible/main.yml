@@ -1,0 +1,17 @@
+- hosts: node_exp
+  user: ubuntu
+  become: true
+  become_method: sudo
+  gather_facts: yes
+  tasks:
+  - include_role:
+      name: node-exporter
+
+  - include_role:
+      name: prometheus
+    connection: local
+
+
+  - include_role:
+      name: grafana
+    connection: local
